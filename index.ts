@@ -2,23 +2,23 @@ import express from 'express';
 import { Config } from './utils/config';
 import cors from "cors";
 import movieRoute from "./routes/movies";
+import { Logger } from './utils/logger';
 
 const app = express();
 const port = Config.PORT;
+const origin = 
+    Config.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://movies-dqhmubinq-ianius.vercel.app"
 
 app.use(
     cors({
-        origin:
-            Config.NODE_ENV === "development"
-                ? "http://localhost:3000"
-                : "http://localhost"
+        origin: origin
     })
 );
 
-app.get('/', (req, res, next) => {
-    res.send('Express + typescript server');
-});
+Logger.info("Origin: ", origin);
 
 app.use("/api/movies", movieRoute);
 
-app.listen(port, () => console.log(`[SERVER]: Server running at http://localhost:${port}`));
+app.listen(port, () => Logger.info(`Server running at port ${port}`));
