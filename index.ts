@@ -9,7 +9,7 @@ const port = Config.PORT;
 const origin = 
     Config.NODE_ENV === "development"
         ? "http://localhost:3000"
-        : "https://movies-ianius.vercel.app/"
+        : "https://movies-chi-neon.vercel.app"
 
 app.use(
     cors({
