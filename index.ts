@@ -1,8 +1,11 @@
-import express from 'express';
 import { Config } from './utils/config';
-import cors from "cors";
-import movieRoute from "./routes/movies";
 import { Logger } from './utils/logger';
+
+import cors from "cors";
+import express from 'express';
+
+import MovieRoute from "./routes/movies";
+import AuthRoute from "./routes/auth";
 
 const app = express();
 const port = Config.PORT;
@@ -11,14 +14,10 @@ const origin =
         ? "http://localhost:3000"
         : "https://movies-chi-neon.vercel.app"
 
-app.use(
-    cors({
-        origin: origin
-    })
-);
+app.use(cors({ origin }));
+app.use(express.json());
 
-Logger.info("Origin: ", origin);
-
-app.use("/api/movies", movieRoute);
+app.use("/api/movies", MovieRoute);
+app.use("/api/auth", AuthRoute);
 
 app.listen(port, () => Logger.info(`Server running at port ${port}`));
