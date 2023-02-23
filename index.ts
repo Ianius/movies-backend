@@ -14,6 +14,8 @@ const origin =
         ? Config.DEV_ORIGIN
         : Config.PROD_ORIGIN;
 
+Logger.info("Origin: ", origin);
+
 app.use(cors({ origin }));
 app.use(express.json());
 
