@@ -11,8 +11,8 @@ const app = express();
 const port = Config.PORT;
 const origin = 
     Config.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://movies-chi-neon.vercel.app"
+        ? Config.DEV_ORIGIN
+        : Config.PROD_ORIGIN;
 
 app.use(cors({ origin }));
 app.use(express.json());

@@ -8,6 +8,8 @@ export const Config = {
     PORT: process.env.PORT,
     API_KEY: process.env.API_KEY,
     NODE_ENV: process.env.NODE_ENV,
+    DEV_ORIGIN: process.env.DEV_ORIGIN,
+    PROD_ORIGIN: process.env.PROD_ORIGIN,
     JWT_KEY: process.env.JWT_KEY,
     DB_USER: process.env.DB_USER,
     DB_PWRD: process.env.DB_PWRD,
