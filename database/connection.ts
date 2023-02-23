@@ -6,7 +6,8 @@ const connection = mysql.createPool({
     user:            Config.DB_USER,
     password:        Config.DB_PWRD,
     database:        Config.DB_NAME,
-    connectionLimit: 10
+    port:            Config.DB_PORT,
+    connectionLimit: 10,
 });
 
 export default connection;
